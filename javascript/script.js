@@ -1,29 +1,29 @@
 
+// this is common get input amount function by using field id
 function getInputAmount(expensesSector) {
-    
+
     const SectorInput = document.getElementById(expensesSector + '-input');
     const SectorInputText = SectorInput.value;
     const SectorInputAmount = parseInt(SectorInputText);
 
-    if( Object.is(SectorInputAmount,NaN)){
-        // Object.is(SectorInputAmount,NaN)
-        console.log('hello');
-        alert("Input  for '"+ expensesSector+'-input' + "' field must be number" )
-        return 0;
-    } 
-    if(SectorInputAmount < 0){
-        alert("Please enter positive value for"+ expensesSector+'-input' + "field" )
+    if (isNaN(SectorInputAmount)) {
+        alert("Input  for '" + expensesSector + '-input' + "' field must be number")
         return 0;
     }
-    
+    if (SectorInputAmount < 0) {
+        alert("Please enter positive value for '" + expensesSector + '-input' + "' field")
+        return 0;
+    }
+
     return SectorInputAmount;
 }
 
-function updateBalance(){
+// this is common update crrunt balance function
+function updateBalance() {
 
     //calculate total expenses amount
-    const  calculateTotalExpenses = getInputAmount('food') + getInputAmount('rent') + getInputAmount('clothes');
-    
+    const calculateTotalExpenses = getInputAmount('food') + getInputAmount('rent') + getInputAmount('clothes');
+
     //calculate balance after expenses total
     const balance = getInputAmount('income') - calculateTotalExpenses;
 
@@ -41,36 +41,33 @@ document.getElementById('calculate-button').addEventListener('click', function (
 
     // find rent expenses amount 
     const rentInputAmount = getInputAmount('rent');
-  
+
     // find clothes expenses amount 
     const clothesInputAmount = getInputAmount('clothes');
-  
+
     //calculate total expenses amount
-    const  calculateTotalExpenses = foodInputAmount + rentInputAmount + clothesInputAmount;
-    
-     // update balance after expenses total
-     const balance = updateBalance();
-     const balanceAfterExpenses = document.getElementById('balance_after_expenses');
-     balanceAfterExpenses.innerText = balance;
+    const calculateTotalExpenses = foodInputAmount + rentInputAmount + clothesInputAmount;
+
+    // update balance after expenses total
+    const balance = updateBalance();
+    const balanceAfterExpenses = document.getElementById('balance_after_expenses');
+    balanceAfterExpenses.innerText = balance;
 
     // update expenses total
     const expensesTotal = document.getElementById('expenses-total');
     // checking condition & show message if the total expenses is bigger than total income
-    if(calculateTotalExpenses > incomeAmount){
+    if (calculateTotalExpenses > incomeAmount) {
         alert('Sorry, your expenses is more than your income!!!');
         expensesTotal.innerText = 0;
         balanceAfterExpenses.innerText = incomeAmount;
-    }else{
+    } else {
         expensesTotal.innerText = calculateTotalExpenses;
     }
-   
-
-   
 
 });
 
 // handel save button event
-document.getElementById('save-button').addEventListener('click', function(){
+document.getElementById('save-button').addEventListener('click', function () {
 
     const balance = updateBalance();
     // find income amount & save percentage 
@@ -85,16 +82,14 @@ document.getElementById('save-button').addEventListener('click', function(){
     const remainingTotal = document.getElementById('Remaining-balance');
 
 
-   
-    if(saveAmount > balance){
+    // check condition: where save amount is biger than  balance 
+    if (saveAmount > balance) {
         savingTotal.innerText = 0;
         remainingTotal.innerText = balance;
         alert('you have not enough balance for saving');
-    }else{
+    } else {
         savingTotal.innerText = saveAmount;
         remainingTotal.innerText = remainingBalance;
     }
-
-
 
 })

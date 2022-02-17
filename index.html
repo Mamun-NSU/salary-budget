@@ -15,12 +15,14 @@
 
 <body>
     <section>
-        <div class="container">
+        <div class="container mt-2">
             <h3 class="text-center text-primary">My Monthly Budget</h3>
             <div class="row d-flex">
+                <!-- left div for photo -->
                 <div class="col-lg-6">
                     <img src="./image/money.jpg" class="img-fluid" alt="background image" />
                 </div>
+                <!-- Right div for input field and calculate -->
                 <div class="col-lg-6 w-50 mx-auto right-div-bg">
                     <form>
                         <h5 class="text-center">Income</h5>
@@ -31,47 +33,57 @@
                                     value="10000">
                             </div>
                         </div>
-                        <h5 class="text-center">Expenses</h5>
-                        <div class="row mb-3">
-                            <label for="food-input" class="col-sm-2 col-form-label">Food:</label>
-                            <div class="col-sm-10">
+                        <!-- expenses div start -->
+                        <h5 class="text-center my-3">Expenses</h5>
+                        <!-- input field for food -->
+                        <div class="row my-3">
+                            <label for="food-input" class="col-2 col-form-label">Food:</label>
+                            <div class="col-10">
                                 <input id="food-input" type="text" class="form-control mx-3 input-field-bg"
                                     value="3000">
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <label for="rent-input" class="col-sm-2 col-form-label">Rent:</label>
-                            <div class="col-sm-10">
+
+                        <!-- input field for rent -->
+                        <div class="row my-2">
+                            <label for="rent-input" class="col-2 col-form-label">Rent:</label>
+                            <div class="col-10">
                                 <input id="rent-input" type="text" class="form-control mx-3 input-field-bg"
                                     value="2000">
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <label for="clothes-input" class="col-sm-2 col-form-label">Clothes:</label>
-                            <div class="col-sm-10">
+
+                        <!-- input field for clothes -->
+                        <div class="row my-3">
+                            <label for="clothes-input" class="col-2 col-form-label">Clothes:</label>
+                            <div class="col-10">
                                 <input id="clothes-input" type="text" class="form-control mx-3 input-field-bg"
                                     value="500">
                             </div>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <button id="calculate-button" type="button" class="btn btn-primary ">Calculate</button>
+                            <button id="calculate-button" type="button"
+                                class="btn btn-primary px-5 my-2 ">Calculate</button>
                         </div>
                     </form>
-                    <div class="text-center">
+
+                    <!-- total expenses and balance  -->
+                    <div class="text-center my-3">
                         <h5>Total Expenses: <span id="expenses-total">5500</span></h5>
                         <h5>Balance: <span id="balance_after_expenses">4500</span></h5>
                     </div>
-                    <form class="row g-3">
 
-                        <div class="col-auto">
-                            <label for="save-input" class="col-sm-2 col-form-label">Save:</label>
-                            <input id="save-input" type="text" class="col-sm-4 ms-3 input-field-bg " value="20">
-                            <span class="col-sm-2 mx-2">%</span>
-                            <button id="save-button" type="button" class="btn btn-primary col-sm-3">Save</button>
-                        </div>
-    
-                    </form>
-                    <div class="text-center">
+                    <!-- bonus part  -->
+                    <div class="row my-3 col-auto">
+                        <label for="save-input" class="col-md-2 col-3">Save:</label>
+                        <input id="save-input" type="text" class="col-md-4 col-6  input-field-bg " value="20">
+                        <span class="col-md-2 col-2 mx-2">%</span>
+                        <button id="save-button" type="button"
+                            class="btn btn-primary col-12 col-md-3 mybtn">Save</button>
+                    </div>
+
+                    <!-- saving amount and remaining balance -->
+                    <div class="text-center mt-2">
                         <h5>Saving Amount: <span id="saving-total">2000</span></h5>
                         <h5>Remaining Balance: <span id="Remaining-balance">2500</span></h5>
                     </div>
@@ -79,6 +91,7 @@
             </div>
         </div>
     </section>
+    <!-- javascript file link -->
     <script src="./javascript/script.js"></script>
 </body>
 

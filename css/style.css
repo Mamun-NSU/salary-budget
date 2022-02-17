@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   padding: 0;
@@ -7,7 +8,31 @@ body {
   background-color: #dcdcdc;
 }
 
+/* background color right div  */
 .right-div-bg {
   background-color: #f8f8f8;
-  padding: 15px 200px;
+  padding: 30px 100px;
+}
+
+/* Media Quaries */
+
+/* For Mobile devices */
+@media only screen and (max-width: 668px) {
+
+  .right-div-bg {
+    padding: 5px 0px;
+  }
+  .mybtn{
+    margin-top: 10px;
+  }
+}
+
+/*  For Tablet devices */
+@media only screen and (min-width: 669px) and (max-width: 992px) {
+  .right-div-bg {
+    padding: 10px 0px;
+  }
+  .mybtn{
+    margin-top: 15px;
+  }
 }
