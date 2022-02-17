@@ -1,15 +1,37 @@
 
 function getInputAmount(expensesSector) {
+    
     const SectorInput = document.getElementById(expensesSector + '-input');
     const SectorInputText = SectorInput.value;
     const SectorInputAmount = parseInt(SectorInputText);
+
+    if( Object.is(SectorInputAmount,NaN)){
+        // Object.is(SectorInputAmount,NaN)
+        console.log('hello');
+        alert("Input  for"+ expensesSector+'-input' + "field must be number" )
+        return 0;
+    } 
+    if(SectorInputAmount < 0){
+        alert("Please enter positive value for"+ expensesSector+'-input' + "field" )
+        return 0;
+    }
+    
     return SectorInputAmount;
 }
 
 function updateBalance(){
 
-    // find total income amount
-    const incomeInputAmount = getInputAmount('income');
+    //calculate total expenses amount
+    const  calculateTotalExpenses = getInputAmount('food') + getInputAmount('rent') + getInputAmount('clothes');
+    
+    //calculate balance after expenses total
+    const balance = getInputAmount('income') - calculateTotalExpenses;
+
+    return balance;
+}
+
+// handel calculate button event
+document.getElementById('calculate-button').addEventListener('click', function () {
 
     // find food expenses amount 
     const foodInputAmount = getInputAmount('food');
@@ -26,16 +48,7 @@ function updateBalance(){
     // update expenses total
     const expensesTotal = document.getElementById('expenses-total');
     expensesTotal.innerText = calculateTotalExpenses;
-    
-    // update balance after expenses total
-    const balance = incomeInputAmount - calculateTotalExpenses;
 
-    return balance;
-}
-
-// handel calculate button event
-document.getElementById('calculate-button').addEventListener('click', function () {
-     
     // update balance after expenses total
     const balance = updateBalance();
     const balanceAfterExpenses = document.getElementById('balance_after_expenses');
@@ -43,7 +56,7 @@ document.getElementById('calculate-button').addEventListener('click', function (
 
 });
 
-
+// handel save button event
 document.getElementById('save-button').addEventListener('click', function(){
 
     // find income amount & save percentage 
