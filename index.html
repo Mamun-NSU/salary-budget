@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my monthly budget</title>
+    <title>My Monthly Budget</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
@@ -14,6 +14,7 @@
 <body>
     <section>
         <div class="container">
+            <h3 class="text-center text-primary">My Monthly Budget</h3>
             <div class="row d-flex">
                 <div class="col-lg-6">
                     <img src="./image/money.jpg" class="img-fluid" alt="..." />
@@ -22,39 +23,58 @@
                     <form>
                         <h4 class="text-center">Income</h4>
                         <div class="row mb-3">
-                            <label for="textInput1" class="col-sm-2 col-form-label">Income</label>
+                            <label for="income-input" class="col-sm-2 col-form-label">Income:</label>
                             <div class="col-sm-10">
-                                <input itemid="income-input" type="text" class="form-control" id="textInput1"
+                                <input id="income-input" type="text" class="form-control mx-3 input-field-bg"
                                     value="10000">
                             </div>
                         </div>
                         <h4 class="text-center">Expenses</h4>
                         <div class="row mb-3">
-                            <label for="" class="col-sm-2 col-form-label">Food</label>
+                            <label for="food-input" class="col-sm-2 col-form-label">Food:</label>
                             <div class="col-sm-10">
-                                <input id="food-input" type="text" class="form-control" id="" value="3000">
+                                <input id="food-input" type="text" class="form-control mx-3 input-field-bg"
+                                    value="3000">
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="" class="col-sm-2 col-form-label">Rent</label>
+                            <label for="rent-input" class="col-sm-2 col-form-label">Rent:</label>
                             <div class="col-sm-10">
-                                <input id="rent-input" type="text" class="form-control" id="" value="2000">
+                                <input id="rent-input" type="text" class="form-control mx-3 input-field-bg"
+                                    value="2000">
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="" class="col-sm-2 col-form-label">Clothes</label>
+                            <label for="clothes-input" class="col-sm-2 col-form-label">Clothes:</label>
                             <div class="col-sm-10">
-                                <input id="clothes-input" type="text" class="form-control" id="" value="500">
+                                <input id="clothes-input" type="text" class="form-control mx-3 input-field-bg"
+                                    value="500">
                             </div>
                         </div>
                         <div class="d-flex justify-content-center">
                             <button id="calculate-button" type="button" class="btn btn-primary ">Calculate</button>
                         </div>
-                        <div class="text-center">
-                            <h4>Total Expenses: <span id="expenses-total">5500</span></h4>
-                            <h4>Balance: <span id="balance-total">4500</span></h4>
+                    </form>
+                    <div class="text-center">
+                        <h4>Total Expenses: <span id="expenses-total">5500</span></h4>
+                        <h4>Balance: <span id="balance_after_expenses">4500</span></h4>
+                    </div>
+                    <form class="row g-3">
+
+                        <div class="col-auto">
+                            <label for="" class="col-sm-2 col-form-label">save:</label>
+                            <div class="col-sm-10">
+                                <input id="" type="text" class="form-control mx-3 input-field-bg" value="20">
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <button id="" type="button" class="btn btn-primary ">Save</button>
                         </div>
                     </form>
+                    <div class="text-center">
+                        <h4>Saving Amount: <span id="saving-total">2000</span></h4>
+                        <h5>Remaining Balance: <span id="balance_after_saving">2500</span></h5>
+                    </div>
                 </div>
             </div>
         </div>
