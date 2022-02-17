@@ -8,7 +8,7 @@ function getInputAmount(expensesSector) {
     if( Object.is(SectorInputAmount,NaN)){
         // Object.is(SectorInputAmount,NaN)
         console.log('hello');
-        alert("Input  for"+ expensesSector+'-input' + "field must be number" )
+        alert("Input  for '"+ expensesSector+'-input' + "' field must be number" )
         return 0;
     } 
     if(SectorInputAmount < 0){
@@ -33,6 +33,9 @@ function updateBalance(){
 // handel calculate button event
 document.getElementById('calculate-button').addEventListener('click', function () {
 
+    // find total income amount 
+    const incomeAmount = getInputAmount('income');
+
     // find food expenses amount 
     const foodInputAmount = getInputAmount('food');
 
@@ -45,20 +48,31 @@ document.getElementById('calculate-button').addEventListener('click', function (
     //calculate total expenses amount
     const  calculateTotalExpenses = foodInputAmount + rentInputAmount + clothesInputAmount;
     
+     // update balance after expenses total
+     const balance = updateBalance();
+     const balanceAfterExpenses = document.getElementById('balance_after_expenses');
+     balanceAfterExpenses.innerText = balance;
+
     // update expenses total
     const expensesTotal = document.getElementById('expenses-total');
-    expensesTotal.innerText = calculateTotalExpenses;
+    // checking condition & show message if the total expenses is bigger than total income
+    if(calculateTotalExpenses > incomeAmount){
+        alert('Sorry, your expenses is more than your income!!!');
+        expensesTotal.innerText = 0;
+        balanceAfterExpenses.innerText = incomeAmount;
+    }else{
+        expensesTotal.innerText = calculateTotalExpenses;
+    }
+   
 
-    // update balance after expenses total
-    const balance = updateBalance();
-    const balanceAfterExpenses = document.getElementById('balance_after_expenses');
-    balanceAfterExpenses.innerText = balance;
+   
 
 });
 
 // handel save button event
 document.getElementById('save-button').addEventListener('click', function(){
 
+    const balance = updateBalance();
     // find income amount & save percentage 
     const incomeInputAmount = getInputAmount('income');
     const saveInputPercentage = getInputAmount('save');
@@ -66,12 +80,21 @@ document.getElementById('save-button').addEventListener('click', function(){
     // update save amount
     const saveAmount = incomeInputAmount * (saveInputPercentage / 100);
     const savingTotal = document.getElementById('saving-total');
-    savingTotal.innerText = saveAmount;
 
-    // update remaining amount 
     const remainingBalance = updateBalance() - saveAmount;
     const remainingTotal = document.getElementById('Remaining-balance');
-    remainingTotal.innerText = remainingBalance;
+
+
+   
+    if(saveAmount > balance){
+        savingTotal.innerText = 0;
+        remainingTotal.innerText = balance;
+        alert('you have not enough balance for saving');
+    }else{
+        savingTotal.innerText = saveAmount;
+        remainingTotal.innerText = remainingBalance;
+    }
+
 
 
 })
